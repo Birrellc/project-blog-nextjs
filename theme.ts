@@ -23,7 +23,7 @@ export const myTheme = buildLegacyTheme({
   '--brand-primary': props['orange'],
 
   // Default Button
-  '--default-button-color': '--gray',
+  '--default-button-color': '#f5f5f5',
   '--default-button-primary-color': props['orange'],
   '--default-button-success-color': props['green'],
   '--default-button-warning-color': props['yellow'],

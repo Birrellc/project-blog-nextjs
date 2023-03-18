@@ -1,18 +1,24 @@
-import {defineConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
-import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemas'
+import { defineConfig } from 'sanity';
+import { deskTool } from 'sanity/desk';
+import { visionTool } from '@sanity/vision';
+import { schemaTypes } from './schemas';
+
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!;
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!;
 
 export default defineConfig({
-  name: 'default',
-  title: 'nextjs-blog',
+  // basepath = render location
+  basePath: '/studio',
+  name: 'Content_studio',
+  title: 'Content studio',
 
-  projectId: 'shtv5rwj',
-  dataset: 'production',
+  projectId,
+  dataset,
 
+  // visionTool = groc query testing
   plugins: [deskTool(), visionTool()],
 
   schema: {
     types: schemaTypes,
   },
-})
+});

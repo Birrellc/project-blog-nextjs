@@ -16,9 +16,16 @@ const Header = () => {
             height={50}
           />
         </Link>
-        My Blog Test
+        <h1>My Blog Test</h1>
       </div>
-      <div></div>
+      <div>
+        <Link
+          href='/'
+          className='px-5 py-3 text:sm md:text-base bg-gray-800 text-[#FFF] flex items-center rounded-full text-center'
+        >
+          Sign up to the newsletter!
+        </Link>
+      </div>
     </header>
   );
 };

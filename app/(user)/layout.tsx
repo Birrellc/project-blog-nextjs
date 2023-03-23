@@ -1,4 +1,5 @@
 import '../../app/globals.css';
+import Banner from '../components/Banner';
 import Header from '../components/Header';
 
 export const metadata = {
@@ -15,6 +16,7 @@ export default function RootLayout({
     <html lang='en'>
       <body>
         <Header />
+        <Banner />
         {children}
       </body>
     </html>

@@ -1,6 +1,9 @@
 import { previewData } from 'next/headers';
 import { groq } from 'next-sanity';
 import { client } from '@/lib/sanity.client';
+import PreviewSuspense from '../components/PreviewSuspense';
+import PreviewBlogList from '../components/PreviewBlogList';
+import BlogList from '../components/BlogList';
 
 // Sanity query
 // Get all of type post
@@ -18,9 +21,21 @@ const query = groq`*[_type=="post"] {
 export default async function Home() {
   // check if in preview mode
   if (previewData()) {
-    return <div>Preview Mode</div>;
+    return (
+      <PreviewSuspense
+        fallback={
+          <div role='status'>
+            <p className='text-center text-lg animate-pulse text-[#f77]'>
+              Loading Preview Data...
+            </p>
+          </div>
+        }
+      >
+        <PreviewBlogList query={query} />
+      </PreviewSuspense>
+    );
   }
   const posts = await client.fetch(query);
   console.log(posts);
-  return <div>Not in preview mode</div>;
+  return <div></div>;
 }

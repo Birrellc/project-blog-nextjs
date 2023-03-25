@@ -37,5 +37,5 @@ export default async function Home() {
   }
   const posts = await client.fetch(query);
   console.log(posts);
-  return <div></div>;
+  return <BlogList posts={posts} />;
 }

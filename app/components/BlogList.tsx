@@ -6,12 +6,12 @@ type Props = {
 };
 
 const BlogList = ({ posts }: Props) => {
-  console.log(posts.length);
   return (
     <div>
       <hr className='border-[#f77] mb-12' />
       <div>
         {/* posts */}
+
         {posts.map((post) => (
           <div key={post._id} className='group flex flex-col'>
             <div className='relative w-full h-80 drop-shadow-xl group-hover:scale-110 transition-transform duration-500 ease-out'>
@@ -27,6 +27,7 @@ const BlogList = ({ posts }: Props) => {
               <div className='absolute bottom-0 w-full bg-opacity-20 bg-black backdrop-blur-lg rounded drop-shadow-lg text-white p-5 flex justify-between'>
                 <div>
                   <p className='font-bold'>{post.title}</p>
+                  <p>{post.description}</p>
                   <p>
                     {new Date(post._createdAt).toLocaleDateString('en-gb', {
                       day: 'numeric',
@@ -43,6 +44,10 @@ const BlogList = ({ posts }: Props) => {
                   ))}
                 </div>
               </div>
+            </div>
+            <div className='mt-5 flex-1'>
+              <p className='underline text-lg font-bold'>{post.title}</p>
+              <p className='text-gray-500'>{post.description}</p>
             </div>
           </div>
         ))}

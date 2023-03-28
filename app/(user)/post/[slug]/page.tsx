@@ -2,6 +2,7 @@ import { groq } from 'next-sanity';
 import { client } from '@/lib/sanity.client';
 import Image from 'next/image';
 import urlFor from '@/lib/urlFor';
+import { divide } from 'lodash';
 
 type Props = {
   params: {
@@ -61,6 +62,19 @@ async function Post({ params: { slug } }: Props) {
                   </h3>
                   {/* <div> Author Bio </div> */}
                 </div>
+              </div>
+            </div>
+            <div>
+              <h2 className='italic pt-6'>{post.description}</h2>
+              <div className='flex items-center justify-end mt-auto space-x-2'>
+                {post.categories.map((category) => (
+                  <p
+                    key={category._id}
+                    className='bg-gray-800 text-white px-3 py-1 rounded-full font-semibold mt-4 capitalize'
+                  >
+                    {category.title}
+                  </p>
+                ))}
               </div>
             </div>
           </section>

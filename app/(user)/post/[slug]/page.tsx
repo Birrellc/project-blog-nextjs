@@ -11,6 +11,7 @@ type Props = {
   };
 };
 
+//* Issue - everytime a new post is created on sanity the app needs new build deployed
 // Incremental Static Regeneration replacement - static generation per page
 export async function generateStaticParams() {
   const query = groq`*[_type == "post"]{
@@ -23,6 +24,9 @@ export async function generateStaticParams() {
   // able to create static pages
   return slugRoutes.map((slug) => ({ slug }));
 }
+
+//* Fix - fixes the issue above (server side renders new page every 60 seconds and caches it)
+export const revalidate = 60; // every 60 seconds revalidates the page
 
 async function Post({ params: { slug } }: Props) {
   const query = groq`

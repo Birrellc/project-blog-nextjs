@@ -47,6 +47,19 @@ async function Post({ params: { slug } }: Props) {
                   })}
                 </p>
               </div>
+              <div className='flex items-center space-x-2'>
+                <Image
+                  className='rounded-full'
+                  src={urlFor(post.author.image).url()}
+                  alt={post.author.name}
+                  height={50}
+                  width={50}
+                />
+                <div className='w-54'>
+                  <h3 className='capitalize'>{post.author.name}</h3>
+                  {/* <div> Author Bio </div> */}
+                </div>
+              </div>
             </div>
           </section>
         </div>

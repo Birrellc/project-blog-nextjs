@@ -25,9 +25,9 @@ async function Post({ params: { slug } }: Props) {
   console.log(post);
   return (
     <article className='px-10 pb-28'>
-      <section className='space-y-2 border-[#f77] text-white'>
+      <section className='space-y-2 border border-[#f77] text-white'>
         <div className='relative min-h-56 flex flex-col md:flex-row justify-between'>
-          <div className='absolute top-0 w-full h-full opactity-10 blur-sm p-10'>
+          <div className='absolute top-0 w-full h-full opacity-10 blur-sm p-10'>
             <Image
               className='object-cover object-center mx-auto'
               src={urlFor(post.mainImage).url()}
@@ -35,6 +35,20 @@ async function Post({ params: { slug } }: Props) {
               fill
             />
           </div>
+          <section className='p-5 bg-[#f77] w-full'>
+            <div className='flex flex-col md:flex-row justify-between gap-y-5'>
+              <div>
+                <h1 className='text-4xl font-extrabold'>{post.title}</h1>
+                <p>
+                  {new Date(post._createdAt).toLocaleDateString('en-gb', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                  })}
+                </p>
+              </div>
+            </div>
+          </section>
         </div>
       </section>
     </article>

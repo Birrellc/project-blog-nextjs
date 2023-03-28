@@ -18,6 +18,8 @@ const query = groq`*[_type=="post"] {
   categories[]->,
 } | order(_createdAt desc)`;
 
+export const revalidate = 60; // every 60 seconds revalidates the page
+
 export default async function Home() {
   // check if in preview mode
   if (previewData()) {

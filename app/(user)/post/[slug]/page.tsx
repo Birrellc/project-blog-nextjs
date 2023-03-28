@@ -11,6 +11,19 @@ type Props = {
   };
 };
 
+// Incremental Static Regeneration replacement - static generation per page
+export async function generateStaticParams() {
+  const query = groq`*[_type == "post"]{
+    slug
+  }`;
+  // fetch all slugs from the query
+  const slugs: Post[] = await client.fetch(query);
+  // get all current slugs from sanity
+  const slugRoutes = slugs.map((slug) => slug.slug.current);
+  // able to create static pages
+  return slugRoutes.map((slug) => ({ slug }));
+}
+
 async function Post({ params: { slug } }: Props) {
   const query = groq`
   // query if the type is post & slug is the same as the slug in the url get result back

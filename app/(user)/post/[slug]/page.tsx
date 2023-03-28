@@ -56,7 +56,9 @@ async function Post({ params: { slug } }: Props) {
                   width={50}
                 />
                 <div className='w-54'>
-                  <h3 className='capitalize'>{post.author.name}</h3>
+                  <h3 className='capitalize text-lg font-bold'>
+                    {post.author.name}
+                  </h3>
                   {/* <div> Author Bio </div> */}
                 </div>
               </div>
